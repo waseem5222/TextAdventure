@@ -1,0 +1,5 @@
+||RatHumanoidRoom|LeaveCaveRoom|
+CrawlerRoom||EmptyCavePath|GiantSpiderRoom|
+||EmptyCavePath||
+HellhoundRoom|BatsRoom|WolfRoom||ZombieRoom
+GiantSpiderRoom|EmptyCavePath|StartingRoom|EmptyCavePath|FindDaggerRoom
