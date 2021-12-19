@@ -7,13 +7,14 @@ class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Rock(), 
         items.Slingshot(), items.Revolver(), items.Projectile(), 
-        items.Moltov(), items.Crossbow(), items.SmallPotion()
+        items.Moltov(), items.Crossbow(), items.SmallPotion(), items.BigPotion()
         ] #Inventory on startup
         self.hp = 100 # Health Points
         self.location_x, self.location_y = world.starting_position  #(0, 0)
         self.victory = False #no victory on start up
         self.util= util()
         self.sound= sounds()
+        self.currentWpn=None
 
     def flee(self, tile):
         """Moves the player randomly to an adjacent tile"""
@@ -69,7 +70,7 @@ class Player():
                     print("You have no potions")
                     return None
                 
-                itemChoice = self.util.getIntInput(description='Select the number of potion to heal')-1
+                itemChoice = self.util.getIntInput(description='Select the number of potion to heal: ')-1
                 if itemChoice not in range(0, len(potion_list)):
                     print('\nInvalid choice')
                     self.sound.errorSound()
@@ -92,7 +93,7 @@ class Player():
 
     def equip(self, player):
         try:            
-            print("\nThese are the weapons you currently posses.\n")
+            print("\nThese are the weapons availalbe.\n")
             weapon_list =[]
             for item in self.inventory:
                 if isinstance(item, items.Weapon):
@@ -103,7 +104,7 @@ class Player():
                 i+=1
             
             while True:
-                itemChoice = self.util.getIntInput(description='Select the number of weapon to equip')
+                itemChoice = self.util.getIntInput(description='Select the number of weapon to equip: ')-1
                 if itemChoice not in range(0, len(weapon_list)):
                     print('Invalid weapon choice')
                     sounds.errorSound()
@@ -123,14 +124,17 @@ class Player():
     def attack(self, enemy):
         best_weapon = None
         max_dmg = 0
-        for i in self.inventory:
-         if isinstance(i, items.Weapon):             
-            if i.maxDamage > max_dmg:
-                max_dmg = i.maxDamage
-                best_weapon = i
+        
+        # for i in self.inventory:
+        #  if isinstance(i, items.Weapon):             
+        #     if i.maxDamage > max_dmg:
+        #         max_dmg = i.maxDamage
+        #         best_weapon = i
+        if self.currentWpn==None:
+            self.currentWpn= items.Rock()
  
-        print("You use {} against {}!".format(best_weapon.name, enemy.name))
-        enemy.hp -= best_weapon.maxDamage
+        print("You use {} against {}!".format(self.currentWpn.name, enemy.name))
+        enemy.hp -= random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
         else:

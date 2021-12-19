@@ -73,7 +73,6 @@ class Moltov(Weapon):
                          value=20,
                          minDamage=10, maxDamage=15)
 
-
 class Revolver(Weapon):
     def __init__(self):
         super().__init__(name="Revolver",
@@ -88,7 +87,6 @@ class Slingshot(Weapon):
                          value=2,
                          minDamage=3, maxDamage=5)
 
-
 class Potion(Item):
     def __init__(self, name, description, value, hp):        
         self.hp = hp
@@ -100,3 +98,14 @@ class Potion(Item):
 class SmallPotion(Potion):
     def __init__(self):
         super().__init__(name="Small Potion",description= "Small potion will add 15 hp", value=0, hp=15)
+
+class BigPotion(Potion):
+    def __init__(self):
+        super().__init__(name="Big Potion",description= "Big potion will add 30 hp", value=0, hp=30)
+
+class Sword(Weapon):
+    def __init__(self):
+        super().__init__(name="Sword",
+                         description="A Sword lethal ancient weapon ",
+                         value=20,
+                         minDamage=20, maxDamage=25)

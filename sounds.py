@@ -55,3 +55,33 @@ class sounds():
         time.sleep(1)
         playsound(GiantSpiderSoundpath)
 
+    def TigerSound(self):
+        TigerSoundpath=self.dirname.rstrip()+'\_tgersund.wav'
+        time.sleep(1)
+        playsound(TigerSoundpath)
+
+
+    def ElephantSound(self):
+        ElephantSoundpath=self.dirname.rstrip()+'\_elfsund.mp3'
+        time.sleep(1)
+        playsound(ElephantSoundpath)
+
+    def SnakeSound(self):
+        SnakeSoundpath=self.dirname.rstrip()+'\snakesund.mp3'
+        time.sleep(1)
+        playsound(SnakeSoundpath)
+    
+    def LionSound(self):
+        LionSoundpath=self.dirname.rstrip()+'\lionsund.mp3'
+        time.sleep(1)
+        playsound(LionSoundpath)
+    
+    def DragonSound(self):
+        DragonSoundpath=self.dirname.rstrip()+'\_drgsund.mp3'
+        time.sleep(1)
+        playsound(DragonSoundpath)
+
+    def BearSound(self):
+        BearSoundpath=self.dirname.rstrip()+'\_bersund.mp3'
+        time.sleep(1)
+        playsound(BearSoundpath)

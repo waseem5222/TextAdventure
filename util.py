@@ -46,3 +46,37 @@ class util():
     def VictoryGraphic(self):
         Victory= pyfiglet.figlet_format("VICTORY")
         print(Victory)
+
+    def TigerGraphic(self):
+        Tiger= pyfiglet.figlet_format("Tiger")
+        print(Tiger)
+    
+    def HighwayGraphic(self):
+        Highway= pyfiglet.figlet_format("Highway")
+        print(Highway)
+
+    def ElephantGraphic(self):
+        Elephant= pyfiglet.figlet_format("Elephant")
+        print(Elephant)
+    
+    def BearGraphic(self):
+        Bear= pyfiglet.figlet_format("Bear")
+        print(Bear)
+
+    def SnakeGraphic(self):
+        Snake= pyfiglet.figlet_format("Snake")
+        print(Snake)
+    
+    def MountainGraphic(self):
+        Mountain= pyfiglet.figlet_format("Mountain")
+        print(Mountain)
+    
+    def LionGraphic(self):
+        Lion= pyfiglet.figlet_format("Lion")
+        print(Lion)
+
+    def DragonGraphic(self):
+        Dragon= pyfiglet.figlet_format("Dragon")
+        print(Dragon)    
+    
+

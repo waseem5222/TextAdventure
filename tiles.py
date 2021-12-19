@@ -189,7 +189,6 @@ class BatsRoom(EnemyRoom):
             You killed the bats.
              """
 
-
 class ZombieRoom(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.Zombie())
@@ -221,6 +220,153 @@ class CrawlerRoom(EnemyRoom):
             return """
             You crushed the crawler.
              """
+
+class Elephant(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Elephant())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.ElephantGraphic()
+            self.sounds.ElephantSound();                                 
+            return """
+             The mighty elephant is in front of you, he will break your skull in minutes, be brave!
+             """
+        else:
+            return """
+            You killed the elephant.
+             """
+
+class Bear(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Bear())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.BearGraphic()
+            self.sounds.BearSound()                                 
+            return """
+             The forecul Bear is here. watch it!
+             """
+        else:
+            return """
+            The Bear is dead!.
+             """
+        
+class Snake(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Snake())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.SnakeGraphic()
+            self.sounds.SnakeSound()                                 
+            return """
+             The poisoneous Snake is in the room. it may bite you!
+             """
+        else:
+            return """
+            The Snake is dead!.
+             """
+
+class TigerHerd(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.TigerHerd())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.TigerGraphic()
+            self.sounds.TigerSound();                                 
+            return """
+             The king of the jungle, Tiger is here be careful and show your might!
+             """
+        else:
+            return """
+            You killed the King of the jungle.
+             """
+
+class Lion(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Lion())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.LionGraphic()
+            self.sounds.LionSound();                                 
+            return """
+             The king of the jungle, Lion is here be careful and show your might!
+             """
+        else:
+            return """
+            You killed the King of the jungle.
+             """
+
+
+class Dragon(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Dragon())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.DragonGraphic()
+            self.sounds.DragonSound();                                 
+            return """
+             The ancient Dragon, Dragon may burn you!
+             """
+        else:
+            return """
+            You killed the scary Dragon.
+             """
+
+class ClimbMountain(MapTile):
+    def intro_text(self):
+        return """
+        This mountain in the jungle. Climb it. You will find your way towards your victory.
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class OpenGround(MapTile):
+    def intro_text(self):
+        return """
+        Another open ground in the jungle. pass it. You will find your way towards your victory.
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class WolfPack(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Wolf())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            self.util.WolfRoomGraphic()
+            self.sounds.WolfSound()
+            return """
+             A pack of wolves is hungry, you are passing them!
+             """
+        else:
+            return """
+             The corpses of a dead wolves are on the ground.
+             """
+
+class Highway(MapTile):
+    def intro_text(self):
+        self.util.VictoryGraphic()
+        return """
+        You see the shining highway in the distance...
+        ... you see moving vehicles, go hop on one of them!
+ 
+ 
+        Victory is yours!
+        """
+        
+    def modify_player(self, player):
+        player.victory = True
 
 class LeaveCaveRoom(MapTile):
     def intro_text(self):
