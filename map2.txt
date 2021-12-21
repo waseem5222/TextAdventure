@@ -2,4 +2,4 @@
 ||Elephant||Bear
 ||WolfPack||
 ||Snake||
-OpenGround|ClimbMountain|StartingRoom|Lion|Dragon
+OpenGround|ClimbMountain|StartingJungle|Lion|Dragon

@@ -6,7 +6,7 @@ import pyfiglet
 
 def play(self):
     print(pyfiglet.figlet_format("Welcome to Text Adventure Game!!"))
-    print('You have two choices\n 1. Cave Room\n 2. Jungle Hunt')
+    print('You have two choices\n 1. Cave Room\n 2. Jungle Hunt\n 3. SanAndreas City')
     roomnumber = input('\nEnter your choice:')
     world.load_tiles(roomnumber)
     player = Player()
@@ -21,7 +21,9 @@ def play(self):
             if playagain=='y':
                 player = Player()
                 roomnumber= ChooseGameArcade(roomnumber)
-                room = world.tile_exists(player.location_x, player.location_y)
+                #room = world.tile_exists(player.location_x, player.location_y)
+            else:
+                exit()
         room = world.tile_exists(player.location_x, player.location_y)        
         if not(action_input=='h' or action_input== 'p' or action_input == 't'):
             room.modify_player(player)
@@ -38,14 +40,19 @@ def play(self):
                     break
 
 def ChooseGameArcade(roomnumber):   
-    if roomnumber =='2':
-        roomnumber = 1 
-        world.load_tiles('1')
-        return roomnumber
-    world.load_tiles('2')
-    roomnumber = 2 
-    return roomnumber
+    if roomnumber =='1':
+        print('You have two choices\n 2. Jungle Hunt\n 3. SanAndreas City')       
+        
+    elif roomnumber =='2':
+        print('You have two choices\n 1. Cave Room\n 3. SanAndreas City')        
 
+    else:
+        print('You have two choices\n 1. Cave Room\n 2. Jungle Hunt')
+        
+    roomnumber = input('\nEnter your choice:')        
+    world.load_tiles(roomnumber)
+    return roomnumber
+    
 
 if __name__ == "__main__":
     play(None)

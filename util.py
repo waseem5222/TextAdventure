@@ -33,8 +33,7 @@ class util():
 
     def CrawlerGraphic(self):
         Crawler= pyfiglet.figlet_format("Crawler")
-        print(Crawler)   
-    
+        print(Crawler)       
 
     def getIntInput(self, description):        
         inputint=input(description)
@@ -77,6 +76,38 @@ class util():
 
     def DragonGraphic(self):
         Dragon= pyfiglet.figlet_format("Dragon")
-        print(Dragon)    
+        print(Dragon)
+
+    def OuterCityGraphic(self):
+        OuterCity= pyfiglet.figlet_format("Outer City")
+        print(OuterCity)
+    
+    def RiverGraphic(self):
+        River= pyfiglet.figlet_format("River")
+        print(River)
+
+    def FinanceTowerGraphic(self):
+        FinanceTower= pyfiglet.figlet_format("Finance Tower")
+        print(FinanceTower)
+    
+    def BaseballgroundGraphic(self):
+        Baseballground= pyfiglet.figlet_format("Baseball ground")
+        print(Baseballground)
+
+    def VolleyballgroundGraphic(self):
+        Volleyballground= pyfiglet.figlet_format("Volleyball ground")
+        print(Volleyballground)
+    
+    def DowntownGraphic(self):
+        Downtown= pyfiglet.figlet_format("Downtown")
+        print(Downtown)
+    
+    def LabGraphic(self):
+        Lab= pyfiglet.figlet_format("Lab")
+        print(Lab)
+    
+    def GoldenBridgeGraphic(self):
+        GoldenBridge= pyfiglet.figlet_format("Golden Bridge")
+        print(GoldenBridge)
     
 

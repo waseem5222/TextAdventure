@@ -1,6 +1,8 @@
 ﻿# Base class for all items
 from inspect import classify_class_attrs
 
+from sounds import sounds
+
 
 class Item():
     # __init__ is the contructor method
@@ -8,6 +10,7 @@ class Item():
         self.name = name   # attribute of the Item class and any subclasses
         self.description = description # attribute of the Item class and any subclasses
         self.value = value # attribute of the Item class and any subclasses
+        self.sound= sounds()
     
     # __str__ method is used to print the object
     def __str__(self):
@@ -31,6 +34,9 @@ class Weapon(Item):
  
     def __str__(self):
         return "{}\n=====\n{}\nValue: {}\nMinimum Damage: {}\nMaximum Damage: {}".format(self.name, self.description, self.value, self.minDamage, self.maxDamage)
+    
+    def soundeffect(self):
+        self.sound.PunchSound()
  
 class Rock(Weapon):
     def __init__(self):
@@ -38,6 +44,8 @@ class Rock(Weapon):
                          description="A fist-sized rock, suitable for bludgeoning.",
                          value=0,
                          minDamage=3, maxDamage=5)
+    def soundeffect(self):
+        self.sound.PunchSound()
  
 class Dagger(Weapon):
     def __init__(self):
@@ -45,12 +53,18 @@ class Dagger(Weapon):
                          description="A small dagger with some rust. Somewhat more dangerous than a rock.",
                          value=10,
                          minDamage=8, maxDamage=10)
+    def soundeffect(self):
+        self.sound.DaggerSound()
+
 class Pillow(Weapon):
     def __init__(self):
         super().__init__(name="Pillow",
                          description="A pillow super soft.",
                          value=1,
-                         minDamage=1, maxDamage=1)
+                         minDamage=1, maxDamage=1)                         
+    
+    def soundeffect(self):
+        self.sound.PillowSound()
 
 class Projectile(Weapon):
     def __init__(self):
@@ -59,12 +73,18 @@ class Projectile(Weapon):
                          value=1,
                          minDamage=2, maxDamage=3)
 
+    def soundeffect(self):
+        self.sound.ProjectileSound()
+
 class Crossbow(Weapon):
     def __init__(self):
         super().__init__(name="Crossbow",
                          description="A Crossbow lethal as compared to a dagger",
                          value=20,
                          minDamage=20, maxDamage=25)
+    
+    def soundeffect(self):
+        self.sound.CrossbowSound()
 
 class Moltov(Weapon):
     def __init__(self):
@@ -73,12 +93,18 @@ class Moltov(Weapon):
                          value=20,
                          minDamage=10, maxDamage=15)
 
+    def soundeffect(self):
+        self.sound.MoltovSound()
+
 class Revolver(Weapon):
     def __init__(self):
         super().__init__(name="Revolver",
                          description="A Revolver lethal modern weapon to kill",
                          value=25,
                          minDamage=15, maxDamage=30)
+    
+    def soundeffect(self):
+        self.sound.RevolverSound()
 
 class Slingshot(Weapon):
     def __init__(self):
@@ -86,6 +112,9 @@ class Slingshot(Weapon):
                          description="A Slingshot hits harder than a rock",
                          value=2,
                          minDamage=3, maxDamage=5)
+
+    def soundeffect(self):
+        self.sound.SlingshotSound()
 
 class Potion(Item):
     def __init__(self, name, description, value, hp):        
@@ -109,3 +138,6 @@ class Sword(Weapon):
                          description="A Sword lethal ancient weapon ",
                          value=20,
                          minDamage=20, maxDamage=25)
+
+    def soundeffect(self):
+        self.sound.SwordSound()

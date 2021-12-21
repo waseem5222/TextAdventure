@@ -7,7 +7,7 @@ class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Rock(), 
         items.Slingshot(), items.Revolver(), items.Projectile(), 
-        items.Moltov(), items.Crossbow(), items.SmallPotion(), items.BigPotion()
+        items.Moltov(), items.Crossbow(), items.SmallPotion(), items.BigPotion(), items.Sword()
         ] #Inventory on startup
         self.hp = 100 # Health Points
         self.location_x, self.location_y = world.starting_position  #(0, 0)
@@ -132,10 +132,12 @@ class Player():
         #         best_weapon = i
         if self.currentWpn==None:
             self.currentWpn= items.Rock()
- 
+
+        self.currentWpn.soundeffect()
         print("You use {} against {}!".format(self.currentWpn.name, enemy.name))
         enemy.hp -= random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)
         if not enemy.is_alive():
+            self.sound.KillSound()
             print("You killed {}!".format(enemy.name))
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
