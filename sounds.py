@@ -10,7 +10,7 @@ class sounds():
         pass
 
     def WolfSound(self):        
-        wolfsoundpath=self.dirname.strip()+'\wolfsund.wav'       
+        wolfsoundpath=self.dirname.strip()+'\wolfsund.mp3'       
         
         time.sleep(1)
         playsound(wolfsoundpath)
@@ -193,6 +193,6 @@ class sounds():
         playsound(HitSoundpath)
     
     def GameBeginSound(self):
-        GameBeginSoundpath=self.dirname.rstrip()+'\gembgnsund.wav'
-        time.sleep(1)
+        GameBeginSoundpath=self.dirname.rstrip()+'\_gamsund.wav'#os.path.dirname(__file__) + '\_gamsund.wav'         
+        time.sleep(1)        
         playsound(GameBeginSoundpath)
