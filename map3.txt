@@ -1,5 +1,5 @@
 ||OuterCity||
 ||River||
-||Financetower||
+||Financetower|FindDaggerRoom|
 |Baseballground|Volleyballground||
 Downtown||StartingSanAndreas|Lab|Goldenbridge
