@@ -114,7 +114,6 @@ class Player():
             print('\n')        
             print(weapon_list[itemChoice].name, "equipped.\n")
             self.currentWpn= weapon_list[itemChoice]
-
                  
             #add util.py                                                       
         except Exception as ex:
