@@ -110,4 +110,8 @@ class util():
         GoldenBridge= pyfiglet.figlet_format("Golden Bridge")
         print(GoldenBridge)
     
+    def GameOverGraphic(self):
+        GameOver= pyfiglet.figlet_format("Game Over")
+        print(GameOver)
+    
 

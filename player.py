@@ -15,6 +15,7 @@ class Player():
         self.util= util()
         self.sound= sounds()
         self.currentWpn=None
+        self.chemical=False
 
     def flee(self, tile):
         """Moves the player randomly to an adjacent tile"""
@@ -135,7 +136,7 @@ class Player():
 
         self.currentWpn.soundeffect()
         print("You use {} against {}!".format(self.currentWpn.name, enemy.name))
-        enemy.hp -= random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)
+        enemy.hp -= random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)        
         if not enemy.is_alive():
             self.sound.KillSound()
             print("You killed {}!".format(enemy.name))

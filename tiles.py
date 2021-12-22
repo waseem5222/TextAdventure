@@ -86,7 +86,8 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        player.inventory.append(self.item)
+        if not(self.item in player.inventory):
+            player.inventory.append(self.item)
  
     def modify_player(self, player):
         self.add_loot(player)
@@ -101,6 +102,9 @@ class EnemyRoom(MapTile):
             self.sounds.HitSound()
             the_player.hp = the_player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
+            if the_player.hp<=0:
+                print("You are dead")
+                self.util.GameOverGraphic()
 
     def available_actions(self, player):
         if self.enemy.is_alive(): 
@@ -132,7 +136,6 @@ class GiantSpiderRoom(EnemyRoom):
             A giant spider jumps down from its web in front of you!
             """
         else:
-            self.sounds.KillSound()
             return """
             The corpse of a dead spider rots on the ground.
             """
@@ -150,15 +153,14 @@ class WolfRoom(EnemyRoom):
              A wolf jumps down in front of you!
              """
         else:
-            self.sounds.KillSound()
             return """
              The corpse of a dead wolf is on the ground.
              """
 
 
 class FindDaggerRoom(LootRoom):
-    def __init__(self, x, y):
-        super().__init__(x, y, items.Dagger())
+    def __init__(self, x, y):        
+            super().__init__(x, y, items.Dagger())
  
     def intro_text(self):
         if self.beenThere:
@@ -169,7 +171,7 @@ class FindDaggerRoom(LootRoom):
         else:
             self.util.DaggerRoomGraphic()
             return """
-            Your notice something shiny in the corner.
+            You notice something shiny in the corner.
             It's a dagger! You pick it up.
             """
 
@@ -185,7 +187,6 @@ class HellhoundRoom(EnemyRoom):
              A massive flaming dog growls angrily as you enter his lair!
              """
         else:
-            self.sounds.KillSound()
             return """
              The Hellhound corpse. You killed it.
              """
@@ -202,7 +203,6 @@ class RatHumanoidRoom(EnemyRoom):
              A ugly but dangerous looking Rathumanoid is standing in front of you!
              """
         else:
-            self.sounds.KillSound()
             return """
             You killed the impossible rathumanoid.
              """
@@ -218,8 +218,7 @@ class BatsRoom(EnemyRoom):
             return """
              A dark bad Bats are in this room!
              """
-        else:
-            self.sounds.KillSound()
+        else:            
             return """
             You killed the bats.
              """
@@ -235,8 +234,7 @@ class ZombieRoom(EnemyRoom):
             return """
              The impossible to kill zombie is in the room!
              """
-        else:
-            self.sounds.KillSound()
+        else:            
             return """
             You killed the Zombie.
              """
@@ -253,7 +251,6 @@ class CrawlerRoom(EnemyRoom):
              Careful, save yourself a Crawler in the room!
              """
         else:
-            self.sounds.KillSound()
             return """
             You crushed the crawler.
              """
@@ -270,7 +267,6 @@ class Elephant(EnemyRoom):
              The mighty elephant is in front of you, he will break your skull in minutes, be brave!
              """
         else:
-            self.sounds.KillSound()
             return """
             You killed the elephant.
              """
@@ -287,7 +283,6 @@ class Bear(EnemyRoom):
              The forecul Bear is here. watch it!
              """
         else:
-            self.sounds.KillSound()
             return """
             The Bear is dead!.
              """
@@ -304,7 +299,6 @@ class Snake(EnemyRoom):
              The poisoneous Snake is in the room. it may bite you!
              """
         else:
-            self.sounds.KillSound()
             return """
             The Snake is dead!.
              """
@@ -321,7 +315,6 @@ class TigerHerd(EnemyRoom):
              The king of the jungle, Tiger is here be careful and show your might!
              """
         else:
-            self.sounds.KillSound()
             return """
             You killed the King of the jungle.
              """
@@ -338,7 +331,6 @@ class Lion(EnemyRoom):
              The king of the jungle, Lion is here be careful and show your might!
              """
         else:
-            self.sounds.KillSound()
             return """
             You killed the King of the jungle.
              """
@@ -356,7 +348,6 @@ class Dragon(EnemyRoom):
              The ancient Dragon, Dragon may burn you!
              """
         else:
-            self.sounds.KillSound()
             return """
             You killed the scary Dragon.
              """
@@ -393,7 +384,6 @@ class WolfPack(EnemyRoom):
              A pack of wolves is hungry, you are passing them!
              """
         else:
-            self.sounds.KillSound()
             return """
              The corpses of a dead wolves are on the ground.
              """
@@ -427,7 +417,6 @@ class Downtown(EnemyRoom):
              ... The residents are fearfull for their life save them from the Zombies!
              """
         else:
-            self.sounds.KillSound()
             return """
              The downtown is clear, Zombies are dead in the downtown.
         """
@@ -446,7 +435,6 @@ class Lab(EnemyRoom):
              ... You will find the chemical to treat people from Zombie virus, take it with you!
              """
         else:
-            self.sounds.KillSound()
             return """
              The Lab is clear, Zombies are dead in the Lab. You have the treatment chemical.
         """
@@ -466,7 +454,6 @@ class Goldenbridge(EnemyRoom):
              ... Clear the Goldenbridge from the Zombies!
              """
         else:
-            self.sounds.KillSound()
             return """
              The Goldenbridge is clear for ferrying people out of SeanAndreas city.
         """
@@ -485,7 +472,6 @@ class Volleyballground(EnemyRoom):
              ... Clear the Volleyball ground from the Zombies!
              """
         else:
-            self.sounds.KillSound()
             return """
              The Volleyball ground is good to go to the next target, quick.
         """
@@ -504,7 +490,6 @@ class Baseballground(EnemyRoom):
              ... Clear the baseball ground from the Zombies!
              """
         else:
-            self.sounds.KillSound()
             return """
              The baseball ground clear go to the next target, quick.
         """
@@ -524,7 +509,6 @@ class Financetower(EnemyRoom):
              ... Kill them and move for the next target!
              """
         else:
-            self.sounds.KillSound()
             return """
              The Finance tower is clear go to the next target, quick.
         """
@@ -544,7 +528,6 @@ class River(EnemyRoom):
              ... Kill them and get victory over this game!
              """
         else:
-            self.sounds.KillSound()
             return """
              You killed the zombie near the river, you are one step away from victory.
         """
