@@ -5,16 +5,16 @@ starting_position = (0, 0)
 def load_tiles(roomnumber):
     """Parses a file that describes the world space into the _world object"""
     if roomnumber == '1':
-        print(pyfiglet.figlet_format("Welcome to Cave Room!!"))
-        with open('map.txt', 'r') as f:
+        print(pyfiglet.figlet_format("Welcome to SanAndreas City!!"))
+        with open('map3.txt', 'r') as f:       
             rows = f.readlines()
     elif roomnumber == '2':
         print(pyfiglet.figlet_format("Welcome to Jungle Hunt!!"))
         with open('map2.txt', 'r') as f:
             rows = f.readlines()
     else:
-        print(pyfiglet.figlet_format("Welcome to SanAndreas City!!"))
-        with open('map3.txt', 'r') as f:
+        print(pyfiglet.figlet_format("Welcome to Cave Room!!"))
+        with open('map.txt', 'r') as f:
             rows = f.readlines()
     x_max = len(rows[0].split('|')) # Assumes all rows contain the same number of tabs
     for y in range(len(rows)):

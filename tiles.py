@@ -1,5 +1,6 @@
 ﻿from game import play
 import items, enemies, actions, world
+from player import Player
 from util import util
 from sounds import sounds
 
@@ -10,6 +11,7 @@ class MapTile:
         self.y = y
         self.sounds =sounds()
         self.util = util()
+        self.beenThere = False
     def intro_text(self):
         raise NotImplementedError()
  
@@ -41,11 +43,16 @@ class MapTile:
 class StartingRoom(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self):
-        self.sounds.GameBeginSound()
-        return """
-        You find yourself in a cave with a flickering torch on the wall.
-        You can make out four paths, each equally as dark and foreboding.
-        """
+        if self.beenThere:
+            """
+            You are doing good. Just move ahead.
+            """
+        else:
+            self.sounds.GameBeginSound()
+            return """
+            You find yourself in a cave with a flickering torch on the wall.
+            You can make out four paths, each equally as dark and foreboding.
+            """
  
     def modify_player(self, player):
         #Room has no action on player
@@ -54,12 +61,17 @@ class StartingRoom(MapTile):
 class StartingJungle(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self):
-        self.sounds.GameBeginSound()
-        return """
-        Welcome to the Jungle. You have to kill the giants of the jungle
-        Take care these animals are dangerous, in the end you will find the highway.
-        Take a lift in the end.
-        """
+        if self.beenThere:
+            """
+            You are doing good. Just move ahead.
+            """
+        else:
+            self.sounds.GameBeginSound()
+            return """
+            Welcome to the Jungle. You have to kill the giants of the jungle
+            Take care, these animals are dangerous, in the end you will find the highway.
+            Take a lift and go home...
+            """
  
     def modify_player(self, player):
         #Room has no action on player
@@ -67,13 +79,18 @@ class StartingJungle(MapTile):
 
 class StartingSanAndreas(MapTile):
     # override the intro_text method in the superclass
-    def intro_text(self):
-        self.sounds.GameBeginSound()
-        return """
-        Zoombies have attacked SanAndreas city, there are Zombies all around the city
-        The Virus is spreading, kill the Zombies, take the chemical form the lab.
-        And go to the outer city.
-        """
+    def intro_text(self):  
+        if self.beenThere:
+            """
+            You are doing good. Just move ahead.
+            """
+        else:         
+            self.sounds.GameBeginSound()
+            return """
+            Zoombies have attacked SanAndreas city, there are Zombies all around the city
+            The Virus is spreading, kill the Zombies, take the chemical form the lab.
+            And go to the outer city.
+            """
  
     def modify_player(self, player):
         #Room has no action on player
